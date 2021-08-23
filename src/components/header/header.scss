@@ -1,0 +1,25 @@
+.header {
+  margin-top: 60px;
+  //   padding: 10px;
+
+  .headerTitle {
+    position: absolute;
+    top: 11%;
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+    font-size: 70px;
+
+    span {
+      font-size: inherit;
+      font-family: "Allison", cursive;
+      font-weight: bolder;
+    }
+  }
+
+  img {
+    margin-top: 5px;
+    width: 100%;
+    height: 500px;
+  }
+}

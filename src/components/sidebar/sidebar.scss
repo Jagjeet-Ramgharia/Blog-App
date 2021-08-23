@@ -1,9 +1,10 @@
 .sidebar {
   flex: 3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 20px;
+  height: calc(100vh - 60px);
+  overflow-y: scroll;
+  position: sticky;
+  top: 60px;
+  margin-top: 20px;
   padding-bottom: 30px;
   background-color: #fbfbfb;
 

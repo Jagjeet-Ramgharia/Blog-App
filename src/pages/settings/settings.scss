@@ -1,0 +1,83 @@
+.settings {
+  display: flex;
+
+  .wrapper {
+    flex: 9;
+    padding: 20px;
+
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .update {
+        font-size: 30px;
+        margin-bottom: 20px;
+        color: lightcoral;
+      }
+
+      .delete {
+        font-size: 14px;
+        color: tomato;
+        cursor: pointer;
+      }
+    }
+    .settingsForm {
+      display: flex;
+      flex-direction: column;
+
+      .oldPP {
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+
+        img {
+          width: 70px;
+          height: 70px;
+          border-radius: 10px;
+          object-fit: cover;
+          cursor: pointer;
+        }
+        .icon {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          object-fit: cover;
+          cursor: pointer;
+          font-size: 30px;
+          color: teal;
+          margin-left: 10px;
+        }
+      }
+      label {
+        font-size: 20px;
+        margin-top: 20px;
+        margin-bottom: 5px;
+        font-weight: 600;
+      }
+      input {
+        border: none;
+        border-bottom: 1px solid gray;
+        width: 90%;
+        border-radius: 10px;
+        font-size: 18px;
+        outline: none;
+        padding: 10px;
+      }
+      .updateBtn {
+        margin-top: 20px;
+        width: 30%;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        padding: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        text-transform: uppercase;
+        background-color: teal;
+        font-size: 20px;
+        color: white;
+      }
+    }
+  }
+}
