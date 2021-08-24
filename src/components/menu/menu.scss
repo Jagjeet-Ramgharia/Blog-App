@@ -12,8 +12,10 @@
   align-items: center;
   flex-direction: column;
   transition: all 1s ease;
+  box-shadow: 0px 0px 15px -2px black;
   @include mobile {
     height: 120%;
+    box-shadow: 0px 0px 15px -2px black;
   }
 
   &.active {
@@ -30,7 +32,13 @@
     width: 70%;
 
     li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin-bottom: 20px;
+      box-shadow: 0px 0px 15px -2px black;
+      border-radius: 5px;
+      padding: 5px;
 
       a {
         text-decoration: none;
