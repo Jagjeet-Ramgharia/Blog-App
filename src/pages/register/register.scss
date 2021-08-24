@@ -1,3 +1,4 @@
+@import "../../global.scss";
 .Register {
   height: 100vh;
   display: flex;
@@ -14,17 +15,24 @@
     font-weight: 700;
     margin-bottom: 10px;
     text-align: center;
+    @include mobile {
+      font-size: 50px;
+    }
   }
   .RegisterForm {
     height: fit-content;
     display: flex;
     flex-direction: column;
     border: 1.5px solid gray;
-    width: 30%;
+    width: 35%;
     background: linear-gradient(rgba(1, 1, 1, 0.3), rgba(1, 1, 1, 0.33));
     border-radius: 10px;
     box-shadow: 0px 0px 18px -4px black;
     padding: 20px;
+
+    @include mobile {
+      width: 90%;
+    }
 
     label {
       font-size: 30px;
@@ -80,5 +88,9 @@
     font-weight: 700;
     color: whitesmoke;
     cursor: pointer;
+    @include mobile {
+      width: 30%;
+      right: 20px;
+    }
   }
 }

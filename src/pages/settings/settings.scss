@@ -1,23 +1,38 @@
+@import "../../global.scss";
 .settings {
   display: flex;
 
+  @include mobile {
+    width: 120vw;
+  }
   .wrapper {
     flex: 9;
     padding: 20px;
+    @include mobile {
+      margin-top: 50px;
+    }
 
     .title {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      @include mobile {
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 2px 0px 15px -1px black;
+      }
 
       .update {
         font-size: 30px;
-        margin-bottom: 20px;
         color: lightcoral;
+        cursor: pointer;
+        @include mobile {
+          font-size: 25px;
+        }
       }
 
       .delete {
-        font-size: 14px;
+        font-size: 20px;
         color: tomato;
         cursor: pointer;
       }
@@ -25,6 +40,12 @@
     .settingsForm {
       display: flex;
       flex-direction: column;
+      @include mobile {
+        border-radius: 10px;
+        box-shadow: 2px 0px 15px -1px black;
+        padding: 20px;
+        margin-top: 30px;
+      }
 
       .oldPP {
         display: flex;

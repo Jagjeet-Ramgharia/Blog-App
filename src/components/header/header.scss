@@ -1,14 +1,26 @@
+@import "../../global.scss";
 .header {
   margin-top: 60px;
-  //   padding: 10px;
+  margin-bottom: 10px;
+  padding: 10px 0px;
+
+  @include mobile {
+    width: 120%;
+    margin-top: 40px;
+  }
 
   .headerTitle {
     position: absolute;
-    top: 11%;
+    top: 12.5%;
     width: 100%;
     text-align: center;
     z-index: 1;
     font-size: 70px;
+    @include mobile {
+      top: 12%;
+      font-size: 50px;
+      margin-left: 30px;
+    }
 
     span {
       font-size: inherit;
@@ -21,5 +33,11 @@
     margin-top: 5px;
     width: 100%;
     height: 500px;
+    box-shadow: 0px 0px 15px -4px black;
+    padding: 10px;
+
+    @include mobile {
+      width: 100%;
+    }
   }
 }

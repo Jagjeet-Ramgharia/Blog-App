@@ -1,3 +1,4 @@
+@import "../../global.scss";
 .write {
   height: calc(100vh - 100px);
   padding-top: 50px;
@@ -27,6 +28,9 @@
       margin-left: 60px;
       display: flex;
       align-items: center;
+      @include mobile {
+        margin-left: 20px;
+      }
 
       .icon {
         font-size: 25px;
@@ -40,9 +44,17 @@
         font-size: 30px;
         padding: 20px;
         cursor: pointer;
+
+        @include mobile {
+          font-size: 20px;
+          width: 70%;
+        }
       }
       .text {
         font-size: 20px;
+        @include mobile {
+          font-size: 18px;
+        }
       }
     }
     .btn {
@@ -57,6 +69,10 @@
       background-color: teal;
       font-weight: 600;
       cursor: pointer;
+
+      @include mobile {
+        right: 15px;
+      }
     }
   }
 }

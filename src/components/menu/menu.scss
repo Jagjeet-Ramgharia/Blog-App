@@ -1,8 +1,8 @@
-// @import "../../global.scss";
+@import "../../global.scss";
 .menu {
   width: 300px;
   height: 100vh;
-  background-color: rgb(216, 84, 111);
+  background-color: rgb(133, 131, 131);
   position: fixed;
   top: 0;
   right: -300px;
@@ -12,6 +12,9 @@
   align-items: center;
   flex-direction: column;
   transition: all 1s ease;
+  @include mobile {
+    height: 120%;
+  }
 
   &.active {
     right: 0;
