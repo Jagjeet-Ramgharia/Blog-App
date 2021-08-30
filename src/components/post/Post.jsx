@@ -1,31 +1,31 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./post.scss";
 
-const Post = () => {
+const Post = ({ post }) => {
+  const PF = "http://localhost:8000/images/";
   return (
     <div className="post">
       <img
         className="postImg"
-        src="https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGJsb2clMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"
+        src={PF + post?.photo ? PF + post?.photo : "/assets/post.jpg"}
         alt=""
       />
       <div className="postInfo">
         <div className="postCats">
-          <span className="postCat">Music</span>
-          <span className="postCat">Life</span>
+          {post.categories.map((cat) => {
+            return <span className="postCat">{cat.name}</span>;
+          })}
         </div>
-        <span className="postTitle">Lorem ipsum dolor sit amet lo</span>
+        <Link className="link" to={`/post/${post._id}`}>
+          <span className="postTitle">{post.title}</span>
+        </Link>
         <hr />
-        <span className="postDate">1 hour ago</span>
+        <span className="postDate">
+          {new Date(post.createdAt).toDateString()}
+        </span>
       </div>
-      <p className="postDesc">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea consequatur
-        officia facilis aperiam asperiores itaque non neque sequi. Sunt
-        recusandae a vel, unde animi blanditiis voluptates ex ipsa rerum nemo.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea consequatur
-        officia facilis aperiam asperiores itaque non neque sequi. Sunt
-        recusandae a vel, unde animi blanditiis voluptates ex ipsa rerum nemo.
-      </p>
+      <p className="postDesc">{post.desc}</p>
     </div>
   );
 };

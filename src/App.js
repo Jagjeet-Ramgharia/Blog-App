@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./App.scss";
 import Topbar from "./components/topbar/Topbar";
 import Menu from "./components/menu/Menu";
@@ -14,10 +14,11 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import { AuthContext } from "./context/Context";
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const user = true;
+  const { user } = useContext(AuthContext);
   return (
     <div className="app">
       <Router>

@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./menu.scss";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/Context";
 
 const Menu = ({ menuOpen, setMenuOpen }) => {
-  const user = true;
+  const { user } = useContext(AuthContext);
+
   return (
     <div className={"menu " + (menuOpen && "active")}>
       <ul>
@@ -18,9 +20,6 @@ const Menu = ({ menuOpen, setMenuOpen }) => {
         </li>
         <li onClick={() => setMenuOpen(false)}>
           <a href="/write">Write</a>
-        </li>
-        <li onClick={() => setMenuOpen(false)}>
-          {user && <a href="#contact">Logout</a>}
         </li>
       </ul>
     </div>

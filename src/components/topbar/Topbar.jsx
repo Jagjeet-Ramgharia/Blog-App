@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./topbar.scss";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/Context";
 
 const Topbar = ({ menuOpen, setMenuOpen }) => {
-  const user = true;
+  const { user } = useContext(AuthContext);
   return (
     <div className={"topbar " + (menuOpen && "active")}>
       <div className="topleft">
@@ -25,7 +26,9 @@ const Topbar = ({ menuOpen, setMenuOpen }) => {
           <i className="fab fa-linkedin icon"></i>
         </a>
       </div>
-      <div className="topcenter">Blogster</div>
+      <Link to="/" className="link">
+        <div className="topcenter">Blogster</div>
+      </Link>
       <div className="topright">
         {user ? (
           <img

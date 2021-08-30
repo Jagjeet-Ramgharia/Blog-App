@@ -6,7 +6,6 @@ import SinglePost from "../../components/single/SinglePost";
 const Single = () => {
   return (
     <div className="single">
-      <Sidebar />
       <SinglePost />
     </div>
   );

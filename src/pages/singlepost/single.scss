@@ -1,6 +1,7 @@
 @import "../../global.scss";
 .single {
   display: flex;
+  padding: 20px;
   @include mobile {
     width: 120%;
   }
