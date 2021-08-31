@@ -73,6 +73,10 @@
         transition: all 1s ease;
       }
     }
+    .logout {
+      margin-right: 20px;
+      cursor: pointer;
+    }
   }
   &.active {
     background-color: rgb(133, 131, 131);

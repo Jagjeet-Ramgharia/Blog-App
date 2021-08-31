@@ -7,6 +7,7 @@ const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [about, setAbout] = useState("");
   const [error, setError] = useState(false);
 
   const handleRegister = async (e) => {
@@ -17,6 +18,7 @@ const Register = () => {
         username,
         email,
         password,
+        about,
       });
       res.data && window.location.replace("/login");
     } catch (err) {
@@ -40,6 +42,14 @@ const Register = () => {
           placeholder="Enter your Email here"
           onChange={(e) => setEmail(e.target.value)}
           value={email}
+        />
+        <label>About</label>
+        <input
+          type="text"
+          placeholder="Tell Somethin about you."
+          autoComplete="off"
+          value={about}
+          onChange={(e) => setAbout(e.target.value)}
         />
         <label>Password</label>
         <input

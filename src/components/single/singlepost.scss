@@ -8,6 +8,8 @@
 
   .wrapper {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
 
     @include mobile {
       width: 100%;
@@ -52,6 +54,18 @@
         }
       }
     }
+    .title_input {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 20px 0;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid lightgray;
+      outline: none;
+      box-shadow: 0px 0px 15px -8px rgba(39, 38, 38, 0.8);
+      font-size: 20px;
+    }
     .infoContainer {
       display: flex;
       align-items: center;
@@ -71,10 +85,37 @@
       box-shadow: 0px 0px 15px -8px rgba(39, 38, 38, 0.5);
     }
 
+    .desc_input {
+      box-shadow: 0px 0px 15px -4px rgba(39, 38, 38, 0.5);
+      outline: none;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 0px;
+      height: 300px;
+      margin-top: 10px;
+      overflow-y: scroll;
+      scroll-behavior: smooth;
+    }
+
     .desc::first-letter {
       font-size: 30px;
       margin-left: 20px;
       font-weight: 600;
+    }
+    .singlePostBtn {
+      padding: 10px;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      text-transform: uppercase;
+      background-color: teal;
+      color: whitesmoke;
+      font-size: 20px;
+      margin-top: 15px;
+      width: 20%;
+      align-self: flex-end;
     }
   }
 }
