@@ -37,6 +37,7 @@ const Settings = () => {
     try {
       const res = await axios.put(`/users/${user._id}`, updateUser);
       dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
+      window.location.replace("/");
     } catch (err) {
       dispatch({ type: "UPDATE_FAILURE" });
     }

@@ -1,33 +1,38 @@
-import React, { useContext, useEffect, useState } from "react";
-import axios from "../../axios";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+// import axios from "../../axios";
 import "./sidebar.scss";
 import { AuthContext } from "../../context/Context";
 
 const Sidebar = () => {
-  const [cats, setCats] = useState([]);
+  // const [cats, setCats] = useState([]);
   const { user } = useContext(AuthContext);
   const PF = "http://localhost:8000/images/";
 
-  useEffect(() => {
-    const getCats = async () => {
-      try {
-        const res = await axios.get("/categories");
-        setCats(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getCats();
-  }, []);
+  // useEffect(() => {
+  //   const getCats = async () => {
+  //     try {
+  //       const res = await axios.get("/categories");
+  //       setCats(res.data);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
+  //   getCats();
+  // }, []);
   return (
     <div className="sidebar">
       <div className="sidebaritem">
         <span className="sidebartitle">About Me</span>
         <img src={PF + user?.profilePic} alt="" />
-        <p>{user?.about}</p>
+        <span className="email">
+          <i className="far fa-envelope email"></i> {user?.email}
+        </span>
+        <div className="desc">
+          <i className="far fa-address-card"></i>
+          <p>{user?.about}</p>
+        </div>
       </div>
-      <div className="sidebaritem">
+      {/* <div className="sidebaritem">
         <span className="sidebartitle">Categories</span>
         <ul className="sidebarList">
           {cats.map((c) => {
@@ -38,7 +43,7 @@ const Sidebar = () => {
             );
           })}
         </ul>
-      </div>
+      </div> */}
       <div className="sidebaritem">
         <span className="sidebartitle">Follow Us</span>
         <div className="sidebaricon">
