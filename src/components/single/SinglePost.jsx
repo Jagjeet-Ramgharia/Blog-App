@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./singlepost.scss";
 import { AuthContext } from "../../context/Context";
+import parse from "html-react-parser";
 
 const SinglePost = () => {
   const location = useLocation();
@@ -30,7 +31,7 @@ const SinglePost = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`/posts/ ${post._id}`, {
+      await axios.delete(`/posts/${post._id}`, {
         data: { username: user.username },
       });
       window.location.replace("/");
@@ -95,7 +96,7 @@ const SinglePost = () => {
             onChange={(e) => setDesc(e.target.value)}
           />
         ) : (
-          <p className="desc">{desc}</p>
+          <p className="desc">{parse(desc)}</p>
         )}
         {updateMode ? (
           <button className="singlePostBtn" onClick={_handleUpdate}>

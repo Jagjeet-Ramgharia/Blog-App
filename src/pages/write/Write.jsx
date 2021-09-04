@@ -1,20 +1,23 @@
 import React, { useContext, useState } from "react";
 import "./write.scss";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import axios from "../../axios";
 import { AuthContext } from "../../context/Context";
 
 const Write = () => {
   const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState("");
+  // const [desc, setDesc] = useState(null);
   const [file, setFile] = useState(null);
   const { user } = useContext(AuthContext);
+  const [text, setText] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newPost = {
       username: user.username,
       title,
-      desc,
+      desc: text,
     };
     if (file) {
       const data = new FormData();
@@ -58,14 +61,24 @@ const Write = () => {
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>
-        <div className="formGroup">
-          <textarea
+        <div className="CKeditor">
+          <div className="container">
+            <CKEditor
+              editor={ClassicEditor}
+              data={text}
+              onChange={(e, editor) => {
+                const data = editor.getData();
+                setText(data);
+              }}
+            />
+          </div>
+          {/* <textarea
             type="text"
             placeholder="Share your experience"
             className="writeInput text"
             value={desc}
             onChange={(e) => setDesc(e.target.value)}
-          />
+          /> */}
         </div>
         <button className="btn" type="submit">
           Publish

@@ -74,6 +74,7 @@ const Settings = () => {
             placeholder={user?.username}
             autoComplete="off"
             value={username}
+            title={user.username}
             onChange={(e) => setUsername(e.target.value)}
           />
           <label>Email</label>

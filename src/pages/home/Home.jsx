@@ -9,14 +9,19 @@ import { useLocation } from "react-router-dom";
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const { search } = useLocation();
+  const [err, setErr] = useState(false);
 
   useEffect(() => {
     const fetchPost = async () => {
       try {
         const res = await axios.get("/posts" + search);
+        if (!res.statusText === "OK") {
+          throw Error("Could not fetch the data from the resource");
+        }
         setPosts(res.data);
       } catch (err) {
-        console.log(err);
+        setErr(true);
+        console.log(err.message);
       }
     };
     fetchPost();
@@ -26,7 +31,23 @@ const Home = () => {
       <Header />
       <div className="home">
         <Sidebar />
-        <Posts posts={posts} />
+        {err ? (
+          <span
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              textAlign: "center",
+              flex: "9",
+              fontSize: "25px",
+              fontWeight: "500",
+            }}
+          >
+            Something Went Wrong.Please refresh the page or Logout.
+          </span>
+        ) : (
+          <Posts posts={posts} />
+        )}
       </div>
     </>
   );

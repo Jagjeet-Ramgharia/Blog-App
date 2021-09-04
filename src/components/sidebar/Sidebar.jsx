@@ -28,7 +28,7 @@ const Sidebar = () => {
           <i className="far fa-envelope email"></i> {user?.email}
         </span>
         <div className="desc">
-          <i className="far fa-address-card"></i>
+          {/* <i className="far fa-address-card"></i> */}
           <p>{user?.about}</p>
         </div>
       </div>

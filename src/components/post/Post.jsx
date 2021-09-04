@@ -17,6 +17,9 @@ const Post = ({ post }) => {
             return <span className="postCat">{cat.name}</span>;
           })}
         </div>
+        <Link className="link" to={`/?user=${post.username}`}>
+          <span className="postUser">From {post.username}</span>
+        </Link>
         <Link className="link" to={`/post/${post._id}`}>
           <span className="postTitle">{post.title}</span>
         </Link>
