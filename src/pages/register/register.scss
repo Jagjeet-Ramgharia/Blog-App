@@ -5,91 +5,84 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: url("../../images/l.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #fafafa;
 
-  .RegisterTitle {
-    font-size: 30px;
-    color: whitesmoke;
-    font-weight: 700;
-    margin-bottom: 10px;
-    text-align: center;
-    @include mobile {
-      width: 100%;
-      font-size: 50px;
-      text-align: left;
-      margin-left: 50px;
-    }
-  }
   .RegisterForm {
-    height: fit-content;
+    height: 90%;
     display: flex;
     flex-direction: column;
-    border: 1.5px solid gray;
-    width: 35%;
-    background: linear-gradient(rgba(1, 1, 1, 0.4), rgba(1, 1, 1, 0.4));
-    border-radius: 10px;
-    box-shadow: 0px 0px 18px -4px black;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid lightgray;
+    width: 30%;
+    background: #ffffff;
     padding: 20px;
 
     @include mobile {
       width: 90%;
     }
-
-    label {
-      font-size: 30px;
-      font-weight: 500;
-      margin-top: 30px;
-      color: whitesmoke;
-      margin-bottom: 5px;
+    .title {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .RegisterTitle {
+        font-size: 30px;
+        color: gray;
+        font-weight: 700;
+        text-align: center;
+      }
+      .text {
+        text-align: center;
+        color: gray;
+        margin-top: 10px;
+      }
     }
-
-    input {
+    .form_item {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 50%;
+      width: 100%;
+      input {
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        outline: none;
+        background-color: transparent;
+        padding: 7px;
+        font-size: 20px;
+        color: gray;
+      }
+      ::placeholder {
+        color: lightgray;
+        font-size: 18px;
+      }
+    }
+    .RegisterBtn {
       border: none;
       outline: none;
-      background-color: transparent;
-      border-bottom: 2px solid gray;
-      padding: 10px;
-      font-size: 20px;
+      padding: 5px 7px;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 18px;
+      border-radius: 5px;
+      background-color: #0095f6;
+      cursor: pointer;
+      transition: all 0.6s ease;
       color: whitesmoke;
     }
-    ::placeholder {
-      color: white;
-      font-size: 18px;
+    .disable {
+      cursor: not-allowed;
+      background-color: #b2dffc;
+    }
+    .text {
+      text-align: center;
+      color: gray;
     }
   }
-  .RegisterBtn {
-    border: none;
-    outline: none;
-    margin-top: 20px;
-    padding: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 22px;
-    border-radius: 5px;
-    background-color: transparent;
-    cursor: pointer;
-    transition: all 0.6s ease;
-    color: whitesmoke;
 
-    &:hover {
-      background: linear-gradient(rgba(1, 1, 1, 0.33), rgba(1, 1, 1, 0.33));
-    }
-  }
   .loginBtn {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    width: 10%;
-    border: none;
-    outline: none;
-    padding: 6px;
-    border-radius: 10px;
-    background: linear-gradient(rgba(1, 1, 1, 0.44), rgba(1, 1, 1, 0.44));
-    font-size: 22px;
-    font-weight: 700;
-    color: whitesmoke;
+    background: #ffffff;
+    color: gray;
     cursor: pointer;
     @include mobile {
       width: 30%;

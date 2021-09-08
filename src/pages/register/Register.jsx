@@ -27,56 +27,69 @@ const Register = () => {
   };
   return (
     <div className="Register">
-      <span className="RegisterTitle">Sign Up</span>
       <form className="RegisterForm" onSubmit={handleRegister}>
-        <label>Username</label>
-        <input
-          type="text"
-          placeholder="Enter your Username here"
-          onChange={(e) => setUsername(e.target.value)}
-          value={username}
-        />
-        <label>Email</label>
-        <input
-          type="email"
-          placeholder="Enter your Email here"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-        />
-        <label>About</label>
-        <input
-          type="text"
-          placeholder="Tell Somethin about you."
-          autoComplete="off"
-          value={about}
-          onChange={(e) => setAbout(e.target.value)}
-        />
-        <label>Password</label>
-        <input
-          type="password"
-          placeholder="Enter your Password here"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-        />
-        <button className="RegisterBtn" type="submit">
-          Sign Up
-        </button>
+        <div className="title">
+          <span className="RegisterTitle">Blogster</span>
+          <p className="text">
+            Sign up to see photos and videos from your friends.
+          </p>
+        </div>
+        <div className="form_item">
+          <input
+            type="text"
+            placeholder="Username"
+            onChange={(e) => setUsername(e.target.value)}
+            value={username}
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+          />
+          <input
+            type="text"
+            placeholder="Tell Somethin about you."
+            autoComplete="off"
+            value={about}
+            onChange={(e) => setAbout(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+          />
+          <button
+            className={
+              email === "" || password === "" || about === "" || username === ""
+                ? "RegisterBtn disable"
+                : "RegisterBtn"
+            }
+            type="submit"
+          >
+            Sign Up
+          </button>
+        </div>
         {error && (
           <span
             style={{
-              color: "white",
+              color: "gray",
               textAlign: "center",
-              fontSize: "20px",
-              fontWeight: "bolder",
             }}
           >
             Something Went Wrong!
           </span>
         )}
+
+        <p className="text">
+          By signing up, you agree to our Terms , Data Policy and Cookies Policy
+          .
+        </p>
+        <Link className="link" to="/login">
+          <span className="loginBtn">Have an account? Log in</span>
+        </Link>
       </form>
-      <Link className="link" to="/login">
-        <button className="loginBtn">Sign In</button>
-      </Link>
     </div>
   );
 };

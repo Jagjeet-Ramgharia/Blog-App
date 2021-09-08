@@ -15,6 +15,8 @@ import {
   Redirect,
 } from "react-router-dom";
 import { AuthContext } from "./context/Context";
+import Reset from "./pages/reset/Reset";
+import ResetPassword from "./pages/resetPassword/ResetPassword";
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -32,6 +34,10 @@ function App() {
             {user ? <Redirect to="/" /> : <Register />}
           </Route>
           <Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>
+          <Route path="/reset">{user ? <Redirect to="/" /> : <Reset />}</Route>
+          <Route path="/reset-password/:token">
+            {user ? <Redirect to="/" /> : <ResetPassword />}
+          </Route>
           <Route path="/write">
             {user ? <Write /> : <Redirect to="/login" />}
           </Route>

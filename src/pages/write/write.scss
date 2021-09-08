@@ -44,16 +44,23 @@
       }
 
       .icon {
-        font-size: 25px;
+        font-size: 50px;
         cursor: pointer;
+
+        @include mobile {
+          font-size: 25px;
+        }
       }
 
       .writeInput {
-        border: none;
+        border: 1px solid lightgray;
+        border-radius: 5px;
         outline: none;
-        width: 90%;
+        width: 80%;
         font-size: 30px;
-        padding: 20px;
+        padding: 10px;
+        margin-bottom: 10px;
+        margin-left: 20px;
         cursor: pointer;
 
         @include mobile {
