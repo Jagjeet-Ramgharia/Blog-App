@@ -27,7 +27,7 @@ const Login = () => {
       dispatch(loginSuccess(res.data));
     } catch (err) {
       dispatch(loginFailure());
-      setErr(true);
+      setErr(err.response.data.error);
     }
   };
   return (
@@ -66,6 +66,20 @@ const Login = () => {
                 )}
               </button>
             </div>
+            {err && (
+              <span
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  color: "gray",
+                  fontSize: "16px",
+                  fontWeight: "500",
+                }}
+              >
+                {err}
+              </span>
+            )}
             <Link className="link" to="/reset">
               <span
                 style={{
@@ -79,20 +93,6 @@ const Login = () => {
                 forgot Password ?
               </span>
             </Link>
-            {err && (
-              <span
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  color: "gray",
-                  fontSize: "16px",
-                  fontWeight: "500",
-                }}
-              >
-                Invalid Username and Password
-              </span>
-            )}
             <Link className="link" to="/register">
               <span className="registerBtn">
                 Don't have an Account ? <b> Register</b>

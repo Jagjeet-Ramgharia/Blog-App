@@ -8,21 +8,27 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [about, setAbout] = useState("");
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
 
   const handleRegister = async (e) => {
     e.preventDefault();
     setError(false);
     try {
-      const res = await axios.post("/auth/register", {
-        username,
-        email,
-        password,
-        about,
-      });
+      const res = await axios.post(
+        "/auth/register",
+        {
+          username,
+          email,
+          password,
+          about,
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
       res.data && window.location.replace("/login");
     } catch (err) {
-      setError(true);
+      setError(err.response.data.error);
     }
   };
   return (
@@ -78,7 +84,7 @@ const Register = () => {
               textAlign: "center",
             }}
           >
-            Something Went Wrong!
+            {error}
           </span>
         )}
 

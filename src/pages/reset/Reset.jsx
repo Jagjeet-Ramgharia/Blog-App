@@ -6,14 +6,16 @@ import axios from "../../axios";
 const Reset = () => {
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
+  const [err, setErr] = useState("");
   const _handleReset = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("/auth/reset-password", { email });
-      setSent(true);
+      const res = await axios.post("/auth/reset-password", { email });
+      res && setSent(true);
       setEmail("");
     } catch (err) {
-      console.log(err);
+      setErr(err.response.data.error);
+      setTimeout(setErr, 3000);
     }
   };
   return (
@@ -40,6 +42,18 @@ const Reset = () => {
             >
               Send Email
             </button>
+            {err ? (
+              <span
+                style={{
+                  textAlign: "center",
+                  marginTop: "10px",
+                  color: "gray",
+                  fontSize: "14px",
+                }}
+              >
+                {err}
+              </span>
+            ) : null}
             {sent ? (
               <span
                 style={{

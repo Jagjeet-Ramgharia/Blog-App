@@ -19,6 +19,9 @@ const ResetPassword = () => {
       }
       await axios.post("/auth/new-password", { password, token });
       SetMsg(true);
+      setPassword("");
+      setCPassword("");
+      window.location.replace("/login");
     } catch (err) {
       console.log(err);
     }
@@ -63,7 +66,7 @@ const ResetPassword = () => {
           ) : null}
           {msg ? (
             <span style={{ textAlign: "center", color: "gray" }}>
-              Password Updated
+              Password has been Updated
             </span>
           ) : null}
           <hr style={{ width: "95%", color: "lightgray" }} />
