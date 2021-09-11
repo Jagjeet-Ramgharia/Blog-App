@@ -1,4 +1,5 @@
 import React from "react";
+import SkeletonPosts from "../../skeletons/SkeletonPosts";
 import Post from "../post/Post";
 import "./posts.scss";
 

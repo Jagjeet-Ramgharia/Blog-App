@@ -5,6 +5,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import axios from "../../axios";
 import "./home.scss";
 import { useLocation } from "react-router-dom";
+import SkeletonPosts from "../../skeletons/SkeletonPosts";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -12,7 +13,7 @@ const Home = () => {
   const [err, setErr] = useState(false);
 
   useEffect(() => {
-    const fetchPost = async () => {
+    const fetchPosts = async () => {
       try {
         const res = await axios.get("/posts" + search);
         if (!res.statusText === "OK") {
@@ -24,30 +25,15 @@ const Home = () => {
         console.log(err.message);
       }
     };
-    fetchPost();
+    fetchPosts();
   }, [search]);
   return (
     <>
       <Header />
       <div className="home">
         <Sidebar />
-        {err ? (
-          <span
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              flex: "9",
-              fontSize: "25px",
-              fontWeight: "500",
-            }}
-          >
-            Something Went Wrong.Please refresh the page or Logout.
-          </span>
-        ) : (
-          <Posts posts={posts} />
-        )}
+        {!posts && <SkeletonPosts />}
+        {err ? <span>Something Went Wrong</span> : <Posts posts={posts} />}
       </div>
     </>
   );
