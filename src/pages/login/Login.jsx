@@ -1,16 +1,18 @@
 import React, { useContext, useState } from "react";
 import "./login.scss";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { CircularProgress } from "@material-ui/core";
 import { AuthContext } from "../../context/Context";
 import axios from "../../axios";
 import { loginFailure, loginStart, loginSuccess } from "../../context/Action";
+import GoogleLogin from "react-google-login";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { dispatch, isFetching } = useContext(AuthContext);
   const [err, setErr] = useState(false);
+  const history = useHistory();
 
   const login = async (e) => {
     e.preventDefault();
@@ -29,6 +31,17 @@ const Login = () => {
       dispatch(loginFailure());
       setErr(err.response.data.error);
     }
+  };
+  const responseGoogleLogin = async (response) => {
+    const res = await axios.post("auth/google-login", {
+      tokenId: response.tokenId,
+    });
+    localStorage.setItem("user", res.data);
+    history.push("/");
+  };
+
+  const responseGoogleLogout = (response) => {
+    console.log(response);
   };
   return (
     <div className="login">
@@ -98,6 +111,15 @@ const Login = () => {
                 Don't have an Account ? <b> Register</b>
               </span>
             </Link>
+            <span style={{ textAlign: "center", color: "gray" }}>OR</span>
+            <GoogleLogin
+              className="google_login"
+              clientId="209714154059-5ejf39rh7rn65mng1pspmijksuagtn5f.apps.googleusercontent.com"
+              buttonText="Login With Google"
+              onSuccess={responseGoogleLogin}
+              onFailure={responseGoogleLogout}
+              cookiePolicy={"single_host_origin"}
+            />
           </form>
         </div>
       </div>

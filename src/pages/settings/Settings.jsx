@@ -6,10 +6,10 @@ import { AuthContext } from "../../context/Context";
 
 const Settings = () => {
   const [file, setFile] = useState(null);
-  const [username, setUsername] = useState(null);
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
-  const [about, setAbout] = useState(null);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [about, setAbout] = useState("");
   const { user, dispatch } = useContext(AuthContext);
   const PF = "http://localhost:8000/images/";
 

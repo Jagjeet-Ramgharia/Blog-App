@@ -37,7 +37,14 @@ const Topbar = ({ menuOpen, setMenuOpen }) => {
               <i className="fas fa-power-off"></i>
             </span>
             <Link to="/settings">
-              <img src={PF + user?.profilePic} alt="" />
+              <img
+                src={
+                  PF + user?.profilePic
+                    ? PF + user?.profilePic
+                    : user?.profilePic
+                }
+                alt=""
+              />
             </Link>
           </>
         ) : (

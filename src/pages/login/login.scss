@@ -29,7 +29,7 @@
       flex: 6;
       .loginForm {
         margin-top: 20px;
-        height: 90%;
+        height: 95%;
         width: 350px !important;
         display: flex;
         flex-direction: column;
@@ -85,16 +85,16 @@
           cursor: not-allowed;
           background-color: #b2dffc;
         }
-      }
-      .registerBtn {
-        background-color: white;
-        color: gray;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        @include mobile {
+        .registerBtn {
+          background-color: white;
+          color: gray;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          @include mobile {
+          }
         }
       }
     }
