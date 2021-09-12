@@ -23,13 +23,13 @@ const Sidebar = () => {
     <div className="sidebar">
       <div className="sidebaritem">
         <span className="sidebartitle">About Me</span>
-        <img src={PF + user?.profilePic} alt="" />
+        <img src={PF + user?.user?.profilePic} alt="" />
         <span className="email">
-          <i className="far fa-envelope email"></i> {user?.email}
+          <i className="far fa-envelope email"></i> {user?.user?.email}
         </span>
         <div className="desc">
           {/* <i className="far fa-address-card"></i> */}
-          <p>{user?.about}</p>
+          <p>{user?.user?.about}</p>
         </div>
       </div>
       {/* <div className="sidebaritem">

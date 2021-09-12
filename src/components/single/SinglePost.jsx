@@ -14,11 +14,18 @@ const SinglePost = () => {
   const [desc, setDesc] = useState("");
   const [updateMode, setUpdateMode] = useState(false);
   const PF = "http://localhost:8000/images/";
-
+  console.log(user.user.username);
+  console.log(post.username);
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const res = await axios.get("/posts/" + path);
+        const res = await axios.get("/posts/" + path, {
+          headers: {
+            token:
+              "Bearer " + JSON.parse(localStorage.getItem("user")).AccessToken,
+          },
+        });
+        console.log(res);
         setPost(res.data);
         setTitle(res.data.title);
         setDesc(res.data.desc);
@@ -32,7 +39,11 @@ const SinglePost = () => {
   const handleDelete = async () => {
     try {
       await axios.delete(`/posts/${post._id}`, {
-        data: { username: user.username },
+        headers: {
+          token:
+            "Bearer " + JSON.parse(localStorage.getItem("user")).AccessToken,
+        },
+        data: { username: user.user.username },
       });
       window.location.replace("/");
     } catch (err) {}
@@ -40,7 +51,7 @@ const SinglePost = () => {
   const _handleUpdate = async () => {
     try {
       await axios.put(`/posts/${post._id}`, {
-        username: user.username,
+        username: user.user.username,
         title,
         desc,
       });
@@ -66,7 +77,7 @@ const SinglePost = () => {
         ) : (
           <h1 className="title">
             {title}
-            {post.username === user?.username && (
+            {post.username === user?.user?.username && (
               <div className="editContainer">
                 <i
                   className="icon far fa-edit"
@@ -81,7 +92,7 @@ const SinglePost = () => {
         <div className="infoContainer">
           <span className="author">
             Author:
-            <Link className="link" to={`/?user=${post.username}`}>
+            <Link className="link" to={`/?user=${post?.username}`}>
               <b>{post.username}</b>
             </Link>
           </span>

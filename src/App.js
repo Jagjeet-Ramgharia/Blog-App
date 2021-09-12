@@ -17,6 +17,8 @@ import {
 import { AuthContext } from "./context/Context";
 import Reset from "./pages/reset/Reset";
 import ResetPassword from "./pages/resetPassword/ResetPassword";
+import ActivationEmail from "./pages/activationEmail/ActivationEmail";
+import Verify from "./pages/verifyAccount/Verify";
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -24,8 +26,8 @@ function App() {
   return (
     <div className="app">
       <Router>
-        {user ? <Topbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} /> : ""}
-        <Menu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+        {user ? <Topbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} /> : null}
+        {user ? <Menu menuOpen={menuOpen} setMenuOpen={setMenuOpen} /> : null}
         <Switch>
           <Route exact path="/">
             {user ? <Home /> : <Redirect to="/login" />}
@@ -36,7 +38,7 @@ function App() {
           <Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>
           <Route path="/reset">{user ? <Redirect to="/" /> : <Reset />}</Route>
           <Route path="/reset-password/:token">
-            {user ? <Redirect to="/" /> : <ResetPassword />}
+            {!user && <ResetPassword />}
           </Route>
           <Route path="/write">
             {user ? <Write /> : <Redirect to="/login" />}
@@ -46,6 +48,12 @@ function App() {
           </Route>
           <Route path="/post/:id">
             {user ? <Single /> : <Redirect to="/login" />}
+          </Route>
+          <Route path="/activation-email-sent">
+            {!user && <ActivationEmail />}
+          </Route>
+          <Route path="/authentication/activate/:token">
+            {!user && <Verify />}
           </Route>
         </Switch>
       </Router>

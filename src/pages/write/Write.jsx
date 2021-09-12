@@ -15,7 +15,7 @@ const Write = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newPost = {
-      username: user.username,
+      username: user.user.username,
       title,
       desc: text,
     };
@@ -30,7 +30,12 @@ const Write = () => {
       } catch (err) {}
     }
     try {
-      const res = await axios.post("/posts", newPost);
+      const res = await axios.post("/posts", newPost, {
+        headers: {
+          token:
+            "Bearer " + JSON.parse(localStorage.getItem("user")).AccessToken,
+        },
+      });
       window.location.replace("/post/" + res.data._id);
     } catch (err) {
       console.log(err);

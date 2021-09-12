@@ -8,25 +8,18 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [about, setAbout] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(false);
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    setError(false);
     try {
-      const res = await axios.post(
-        "/auth/register",
-        {
-          username,
-          email,
-          password,
-          about,
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-      res.data && window.location.replace("/login");
+      const res = await axios.post("/auth/register", {
+        username,
+        email,
+        password,
+        about,
+      });
+      res.data && window.location.replace("/activation-email-sent");
     } catch (err) {
       setError(err.response.data.error);
     }

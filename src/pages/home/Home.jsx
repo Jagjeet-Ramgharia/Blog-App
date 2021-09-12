@@ -5,7 +5,6 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import axios from "../../axios";
 import "./home.scss";
 import { useLocation } from "react-router-dom";
-import SkeletonPosts from "../../skeletons/SkeletonPosts";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -15,7 +14,12 @@ const Home = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await axios.get("/posts" + search);
+        const res = await axios.get("/posts" + search, {
+          headers: {
+            token:
+              "Bearer " + JSON.parse(localStorage.getItem("user")).AccessToken,
+          },
+        });
         if (!res.statusText === "OK") {
           throw Error("Could not fetch the data from the resource");
         }
@@ -32,8 +36,21 @@ const Home = () => {
       <Header />
       <div className="home">
         <Sidebar />
-        {!posts && <SkeletonPosts />}
-        {err ? <span>Something Went Wrong</span> : <Posts posts={posts} />}
+        {err ? (
+          <span
+            style={{
+              flex: "9",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              fontSize: "30px",
+            }}
+          >
+            Something Went Wrong
+          </span>
+        ) : (
+          <Posts posts={posts} />
+        )}
       </div>
     </>
   );

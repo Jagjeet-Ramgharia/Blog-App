@@ -36,7 +36,7 @@ const Login = () => {
     const res = await axios.post("auth/google-login", {
       tokenId: response.tokenId,
     });
-    localStorage.setItem("user", res.data);
+    localStorage.setItem("user", JSON.stringify(res.data));
     history.push("/");
   };
 
